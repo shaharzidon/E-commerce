@@ -63,7 +63,7 @@ const OrderScreen = ({ match, history }) => {
             document.body.appendChild(script)
         }
 
-        if (!order || successPay || successDeliver) {
+        if (!order || successPay || successDeliver || order._id !== orderId) {
             dispatch({ type: ORDER_PAY_RESET })
             dispatch({ type: ORDER_DELIVER_RESET })
             dispatch(getOrderDetails(orderId))
@@ -209,17 +209,20 @@ const OrderScreen = ({ match, history }) => {
                                 </ListGroup.Item>
                             )}
                             {loadingDeliver && <Loader />}
-                            {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-                                <ListGroup.Item>
-                                    <Button
-                                        type='button'
-                                        className='btn btn-block'
-                                        onClick={deliverHandler}
-                                    >
-                                        Mark As Delivered
-                                    </Button>
-                                </ListGroup.Item>
-                            )}
+                            {userInfo &&
+                                userInfo.isAdmin &&
+                                order.isPaid &&
+                                !order.isDelivered && (
+                                    <ListGroup.Item>
+                                        <Button
+                                            type='button'
+                                            className='btn btn-block'
+                                            onClick={deliverHandler}
+                                        >
+                                            Mark As Delivered
+                                        </Button>
+                                    </ListGroup.Item>
+                                )}
                         </ListGroup>
                     </Card>
                 </Col>
