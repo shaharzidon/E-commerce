@@ -87,7 +87,7 @@ const CartScreen = ({ match, location, history }) => {
                         <ListGroup.Item>
                             <h2>
                                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
-                                items
+                                Items
                             </h2>
                             $
                             {cartItems
