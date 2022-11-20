@@ -11,6 +11,8 @@ import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
 
 const HomeScreen = ({ match }) => {
+    console.log(process.env.BACKEND_URL)
+
     const keyword = match.params.keyword
 
     const pageNumber = match.params.pageNumber || 1
